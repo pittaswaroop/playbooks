@@ -1,0 +1,11 @@
+---
+- name: for captring user  /bin/bash/shell
+  hosts: all
+  tasks:
+  - name: captring info from  /etc/password
+    shell: grep /bin/bash/etc/passwd>file1
+  - name: feching files
+    fetch:
+     src: /home/vagrant/file1
+     dest: /home/vagrant
+...     

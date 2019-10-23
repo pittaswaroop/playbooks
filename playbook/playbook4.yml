@@ -1,0 +1,14 @@
+---
+- name: install git and download a remote  repo
+  hosts: all
+  tasks:
+  - name: install Git
+    apt:
+     name: git
+     state: present
+     update_cache: yes
+  - name: download the remote repo
+    git:
+     repo: https://github.com/pittaswaroop/first-repo.git
+     dest: /tmp/git1
+...     

@@ -1,0 +1,29 @@
+---
+- name: handlers exmple palybook
+  hosts: all
+  tasks:
+   - name: install apache2
+     apt:
+       name: apache2
+       state: present 
+       update_cache: no 
+     notify: check url response
+   - name: edit index.html file    
+     copy:
+        content: "wel come to intliq"
+        dest: /var/www/html/index.file
+     notify: restart_apache2
+  handlers: 
+   - name: restsrt apache2
+     service: 
+          name: apache2
+          state: restarted
+   - name: check url response
+     uri:
+       url: "{{item}}"
+       status: 200
+     with_items: 
+           - http://172.31.44.7
+           - http://172.31.39.195
+           - http://172.31.34.5
+...             

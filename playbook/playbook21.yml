@@ -1,0 +1,20 @@
+---
+- name: create user if not prsent and update the passwd
+  hosts: all
+  tasks:
+  - name: create user
+    user:
+     name: swaru
+    register: results
+  - name: display the output of user module
+    debug:
+      var: results
+  - name: update the password if user is newly created
+    user:
+      name: swaru  
+      password: 1234
+    when:
+      results.changed == true    
+...     
+
+

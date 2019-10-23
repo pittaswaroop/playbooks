@@ -1,0 +1,12 @@
+---
+- name: creating user
+  hosts: all
+  tasks: 
+  - name: user creation
+    user:
+     name: swaru
+     password: intelliq
+     home: /home /anu
+     shell: /bin/sh
+     
+...     

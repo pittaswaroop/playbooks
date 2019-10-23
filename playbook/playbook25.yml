@@ -1,0 +1,14 @@
+---
+- name: using when module
+  hosts: all
+  vars:
+    - a: 30
+  tasks: 
+     - name: install tree
+       apt:
+        name: tree
+        state: present
+        update_cache: yes
+       when:
+          a == 20
+...          

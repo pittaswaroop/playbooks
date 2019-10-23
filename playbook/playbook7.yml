@@ -1,0 +1,18 @@
+---
+- name: creating users and captring username and home dir
+  hosts: 172.31.44.7
+  tasks:
+  - name: update apt repo and install apache2
+    apt:
+     name: apache2
+     state: present
+     update_cache: yes 
+  - name: starting apache service
+    service:
+     name: apache2      
+     state: started
+  - name: checking url response
+    uri:
+     url: http://172.31.39.195
+     status: 200
+...    

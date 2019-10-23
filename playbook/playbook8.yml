@@ -1,0 +1,18 @@
+---
+- name: installing apache2
+  hosts: 172.31.44.7
+  tasks:
+  - name:     installing apache2
+    apt:
+     name: apache2
+     state:   present
+- name:   install git
+  hosts: 172.31.39.195
+  tasks:
+  - name: install git        
+    apt:
+            name: git
+            state: present
+...            
+
+

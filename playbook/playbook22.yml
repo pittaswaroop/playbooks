@@ -1,0 +1,21 @@
+---
+- name: tags in ansible
+  hosts: all
+  tasks:
+   - name: install tree
+     apt:
+      name: tree
+      state: present
+     tags:
+       tree _instalation
+   - name: user creation
+     user:
+      name: swaruoop
+      password: inteliq
+     tags:
+        user_creation
+   - name: copy the password file
+     copy:
+        src: /etc/passwd
+        dest: /tmp
+...             

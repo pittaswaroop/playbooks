@@ -1,0 +1,20 @@
+---
+- name: checking folder and creating file in it
+  hosts: all
+  tasks:
+    - name: check if folder1 is present
+      stat:
+        path: /home/ubuntu/folder1
+      register: results
+    - name: display output on the screen
+      debug:
+         var: results
+    - name: create file
+      file:
+        name: /home/ubuntu/folder1/file1
+        state: touch
+      when:
+          results.stat.exists==true    
+
+
+...         

@@ -1,0 +1,6 @@
+---
+- name: creating file
+  file:
+    name: file1 
+    state: touch
+...    

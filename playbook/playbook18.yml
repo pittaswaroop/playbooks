@@ -1,0 +1,16 @@
+---
+- name: handlers exmple palybook
+  hosts: all
+  tasks:
+   - name: install apache2
+     apt:
+       name: apache2
+       state: present
+       update_cache: no
+     notify: restart_apache2
+  handlers:
+   - name: restsrt apache2
+     service:
+          name: apache2
+          state: restarted
+... 

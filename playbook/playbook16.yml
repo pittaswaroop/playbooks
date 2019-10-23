@@ -1,0 +1,23 @@
+---
+- name: creating user and copying files
+  hosts: all
+  tasks:
+  - name: user creation
+    user:
+     name: "{{item.a}}"
+     password: "{{item.b}}"
+     home: "{{item.c}}" 
+    with_items: 
+      - {a: babu,b: inteliq,c: /home/babu} 
+      - {a: swaru,b: swaru123,c: /home/swaru}
+  - name: copying files
+    copy:
+      src: "{{item.a}}"
+      dest: "{{item.b}}"
+      owner: "{{item.c}}"
+      group: "{{item.d}}"
+    with_items:
+           - {a: /etc/passwd,b: /home/babu,c: babu,d: swaru}
+           - {a: /etc/passwd,b: /home/swaru,c: swaru,d: babu}
+...             
+       

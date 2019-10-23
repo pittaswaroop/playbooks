@@ -1,0 +1,34 @@
+---
+- name: configuring tomcat8
+  hosts: all
+  tasks: 
+   - name: install tomact8
+     apt:
+      name: tomcat8
+      state: present
+   - name: change port of tomcat from 8080 to 9090  
+     replace:
+      regexp: 8080
+      replace: 9090
+      path: /etc/tomcat8/server.xml
+   - name: restart tomcat8
+     service:
+      name: tomcat8
+      state: restarted
+   - name: pause for 2 seconds
+     pause:
+      seconds: 2 
+   - name: check url resopne of tomcat8 on the managed nodes
+     uri:
+      url: http://172.31.44.7:9090 
+      status: 200
+   - name: check url resopne of tomcat8 on the managed nodes
+     uri:
+      url: http://172.31.39.195:9090
+      status: 200
+   - name: check url resopne of tomcat8 on the managed nodes
+     uri:
+      url: http://172.31.34.5:9090
+      status: 200
+...      
+

@@ -1,0 +1,12 @@
+---
+- name: creating files and directries
+  hosts: all
+  tasks: 
+  - name: file creating/dir creation and controling ownership
+    file:
+     name: "{{a}}"
+     state: "{{b}}"
+     owner: "{{c}}"
+     group: "{{d}}"
+     mode: "{{e}}"
+...    

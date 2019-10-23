@@ -1,0 +1,14 @@
+---
+- name: installin s/w packages
+  hosts: webserver
+  tasks:
+  - name: install s/w packages
+    apt:
+     name: "{{item}}"
+     state: present
+     update_cache: no
+    with_items:
+       - tree
+       - git
+       - apache2
+...  
